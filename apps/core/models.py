@@ -17,6 +17,9 @@ class Quiz(TimestampedModel):
         verbose_name = _('quiz')
         verbose_name_plural = _('quizes')
 
+    def __str__(self):
+        return self.name
+
 
 class QuizQuestion(TimestampedModel):
     order = models.PositiveSmallIntegerField(_('order'))
@@ -29,8 +32,12 @@ class QuizQuestion(TimestampedModel):
     )
 
     class Meta:
+        ordering = ('order',)
         verbose_name = _('quiz question')
         verbose_name_plural = _('quiz questions')
+
+    def __str__(self):
+        return self.question
 
 
 class QuizQuestionChoice(TimestampedModel):
@@ -45,8 +52,12 @@ class QuizQuestionChoice(TimestampedModel):
     )
 
     class Meta:
+        ordering = ('order',)
         verbose_name = _('quiz question choice')
         verbose_name_plural = _('quiz questions choice')
+
+    def __str__(self):
+        return self.answer
 
 
 class QuizAnswerSession(TimestampedModel):
@@ -64,3 +75,6 @@ class QuizAnswerSession(TimestampedModel):
     class Meta:
         verbose_name = _('quiz answer session')
         verbose_name_plural = _('quiz answer sessions')
+
+    def __str__(self):
+        return f'Quiz: {self.quiz.name} - Answer from {self.email}'
