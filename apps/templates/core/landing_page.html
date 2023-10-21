@@ -2,4 +2,5 @@
 
 {% block content %}
     <p>Welcome to the Quiz - {{object.name}}</p>
+    <a href={% url 'registration' pk=object.pk %}>Start quiz</a>
 {% endblock content %}
