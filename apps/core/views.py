@@ -33,3 +33,11 @@ class Registration(CreateView):
         context = super().get_context_data(**kwargs)
         context['quiz'] = self.quiz
         return context
+
+    def get_success_url(self):
+        return reverse('intersticial', kwargs={'pk': self.object.pk})
+
+
+class IntersticialPageView(DetailView):
+    template_name = 'core/intersticial.html'
+    model = Quiz

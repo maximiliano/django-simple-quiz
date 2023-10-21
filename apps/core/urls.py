@@ -9,4 +9,9 @@ urlpatterns = [
         views.Registration.as_view(),
         name='registration',
     ),
+    path(
+        '<int:pk>/intersticial/',
+        views.IntersticialPageView.as_view(),
+        name='intersticial',
+    ),
 ]
