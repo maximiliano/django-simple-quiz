@@ -19,4 +19,5 @@ urlpatterns = [
         views.QuestionPageView.as_view(),
         name='question',
     ),
+    path('thank-you/', views.ThankYouPageView.as_view(), name='thank_you'),
 ]

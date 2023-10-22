@@ -88,8 +88,16 @@ class QuestionPageView(TemplateView):
         answer_session.answer_data = data
         answer_session.save(update_fields=['answer_data'])
 
+        last = QuizQuestion.objects.filter(quiz_id=self.quiz.pk).last()
+        if question == last:
+            return redirect(reverse('thank_you'))
+
         url = reverse(
             'question',
             kwargs={'pk': self.quiz.pk, 'order': self.order + 1},
         )
         return redirect(url)
+
+
+class ThankYouPageView(TemplateView):
+    template_name = 'core/thank_you.html'
