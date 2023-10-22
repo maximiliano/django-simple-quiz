@@ -137,3 +137,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# https://docs.djangoproject.com/en/4.2/ref/middleware/#referrer-policy
+# Django does not set Referer in request headers by default, and for some videos (e.g. popular music videos that are copyrighted) youtube checks if the Referer has a host name (e.g http://localhost:8000/ in dev or https://examplesite.com), if the Referer is not set or it is simply an IP (e.g. 192.168.1.1:8000) then the video won't play. The "no-referrer-when-downgrade" is 1 of the Django referrer policy settings that adds the referer header except when downgrading from https to http.
+SECURE_REFERRER_POLICY = "no-referrer-when-downgrade"

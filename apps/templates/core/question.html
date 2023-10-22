@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% if question.video_url %}
+    <iframe
+      width="560"
+      height="315"
+      src="{{question.video_url}}"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+    <hr />
+  {% endif %}
+
   <form method="POST">
     {% csrf_token %}
 
