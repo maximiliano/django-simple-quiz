@@ -14,4 +14,9 @@ urlpatterns = [
         views.IntersticialPageView.as_view(),
         name='intersticial',
     ),
+    path(
+        '<int:pk>/question/<int:order>/',
+        views.QuestionPageView.as_view(),
+        name='question',
+    ),
 ]

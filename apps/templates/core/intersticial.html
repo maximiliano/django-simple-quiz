@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block head %}
+  <meta http-equiv="refresh" content="5;{% url 'question' pk=quiz.pk order=1 %}">
+{% endblock head %}
+
 {% block content %}
   <p>{{object.name}}</p>
   <hr />

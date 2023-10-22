@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form method="POST">
+    {% csrf_token %}
+
+    <fieldset>
+      <legend>{{ question.order }} - {{ question.question }}</legend>
+      {% for choice in question.choices.all %}
+      <div>
+        <input type="radio" name="answer" value="{{choice.answer_slug}}" id="{{choice.answer_slug}}" />
+        <label for="{{choice.answer_slug}}">{{choice.answer}}</label>
+      </div>
+      {% endfor %}
+    </fieldset>
+
+    <input type="hidden" name="question_order" value="{{question.order}}">
+    <button>Answer and Go to Next Question</button>
+  </form>
+
+{% endblock content %}
